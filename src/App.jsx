@@ -8,6 +8,40 @@ const App = () => {
 
   const { name, job, image, text } = people[index];
 
+  const prevPerson = () => {
+
+    setIndex((currentIndex) => {
+      const newIndex = currentIndex - 1;
+
+      if (newIndex < 0) {
+        return people.length - 1;
+      }
+
+      return newIndex;
+
+    });
+
+  };
+
+  const nextPerson = () => {
+
+
+    setIndex((currentIndex) => {
+
+      const newIndex = currentIndex + 1;
+
+      if (newIndex > people.length - 1) {
+
+        return 0;
+
+      }
+
+      return newIndex;
+
+    });
+
+  };
+
   return (
     <main>
       <article className='review'>
@@ -20,6 +54,16 @@ const App = () => {
         <h4 className='author'>{name}</h4>
         <p className='job'>{job}</p>
         <p className='info'>{text}</p>
+
+        <div className="btn-container">
+          <button className='prev-btn' type='button' onClick={prevPerson}>
+            <FaChevronLeft />
+          </button>
+          <button className='next-btn' type='button' onClick={nextPerson}>
+            <FaChevronRight />
+          </button>
+        </div>
+
       </article>
     </main>
   );
