@@ -61,6 +61,22 @@ const App = () => {
 
   };
 
+  const randomPerson = () => {
+
+    setIndex((currentIndex) => {
+
+      let newIndex = Math.floor(Math.random() * people.length);
+
+      if (newIndex === currentIndex) {
+        newIndex++;
+      }
+
+      return checkNumber(newIndex);
+
+    });
+
+  };
+
   return (
     <main>
       <article className='review'>
@@ -82,6 +98,8 @@ const App = () => {
             <FaChevronRight />
           </button>
         </div>
+
+        <button className='btn btn-hipster' onClick={randomPerson}>surprise me</button>
 
       </article>
     </main>
