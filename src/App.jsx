@@ -1,10 +1,12 @@
 import { useState } from "react";
-import data from "./data";
+import people from "./data";
 
 const App = () => {
-    const [reviews, setReviews] = useState(data);
+    const [index, setIndex] = useState(0);
 
-    console.log(reviews);
+    const { name, job, image, text } = people[index];
+
+    console.log(name);
 
     return <h2>Reviews Starter</h2>;
 };
