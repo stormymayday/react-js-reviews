@@ -2,20 +2,36 @@
 
 import data from "@/data";
 import { useState } from "react";
-import { FaReact } from "react-icons/fa";
+import { FaQuoteRight } from "react-icons/fa";
+import Image from "next/image";
 
 function Reviews() {
     const [index, setIndex] = useState(0);
 
-    const { name } = data[index];
+    const { name, image, job, text } = data[index];
 
     console.log(name, setIndex);
 
     return (
-        <div>
-            <h1>Reviews</h1>
-            <FaReact />
-        </div>
+        <main>
+            <article className="review">
+                <div className="img-container">
+                    <Image
+                        src={image}
+                        alt={name}
+                        height={200}
+                        width={200}
+                        className="person-img"
+                    />
+                    <span className="quote-icon">
+                        <FaQuoteRight />
+                    </span>
+                </div>
+                <h4 className="author">{name}</h4>
+                <p className="job">{job}</p>
+                <p className="info">{text}</p>
+            </article>
+        </main>
     );
 }
 export default Reviews;
