@@ -3,7 +3,11 @@
 import data from "@/data";
 import { useState } from "react";
 import { FaQuoteRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { getNextCyclicIndex, getPreviousCyclicIndex } from "@/utils";
+import {
+    getNextCyclicIndex,
+    getPreviousCyclicIndex,
+    getRandomIndex,
+} from "@/utils";
 import Image from "next/image";
 
 function Reviews() {
@@ -49,6 +53,14 @@ function Reviews() {
                         <FaChevronRight />
                     </button>
                 </div>
+                <button
+                    onClick={() => {
+                        setIndex(getRandomIndex(index, data.length));
+                    }}
+                    className="btn btn-hipster"
+                >
+                    surprise me
+                </button>
             </article>
         </main>
     );

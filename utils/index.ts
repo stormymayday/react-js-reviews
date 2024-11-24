@@ -19,3 +19,14 @@ export const getPreviousCyclicIndex = (
         return arrayLength - 1;
     }
 };
+
+export const getRandomIndex = (
+    currentIndex: number,
+    arrayLength: number
+): number => {
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * arrayLength);
+    } while (randomIndex === currentIndex && arrayLength > 1);
+    return randomIndex;
+};
