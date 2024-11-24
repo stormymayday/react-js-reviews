@@ -3,28 +3,13 @@
 import data from "@/data";
 import { useState } from "react";
 import { FaQuoteRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { getNextCyclicIndex, getPreviousCyclicIndex } from "@/utils";
 import Image from "next/image";
 
 function Reviews() {
     const [index, setIndex] = useState(0);
 
     const { name, image, job, text } = data[index];
-
-    const nextPerson = () => {
-        if (index < data.length - 1) {
-            setIndex(index + 1);
-        } else {
-            setIndex(0);
-        }
-    };
-
-    const prevPerson = () => {
-        if (index > 0) {
-            setIndex(index - 1);
-        } else {
-            setIndex(data.length - 1);
-        }
-    };
 
     return (
         <main>
@@ -45,10 +30,22 @@ function Reviews() {
                 <p className="job">{job}</p>
                 <p className="info">{text}</p>
                 <div className="btn-container">
-                    <button onClick={prevPerson} className="prev-btn">
+                    <button
+                        onClick={() => {
+                            setIndex(
+                                getPreviousCyclicIndex(index, data.length)
+                            );
+                        }}
+                        className="prev-btn"
+                    >
                         <FaChevronLeft />
                     </button>
-                    <button onClick={nextPerson} className="next-btn">
+                    <button
+                        onClick={() => {
+                            setIndex(getNextCyclicIndex(index, data.length));
+                        }}
+                        className="next-btn"
+                    >
                         <FaChevronRight />
                     </button>
                 </div>
