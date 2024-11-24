@@ -2,6 +2,7 @@
 
 import data from "@/data";
 import { useState } from "react";
+import { FaReact } from "react-icons/fa";
 
 function Reviews() {
     const [index, setIndex] = useState(0);
@@ -10,6 +11,11 @@ function Reviews() {
 
     console.log(name, setIndex);
 
-    return <div>Reviews</div>;
+    return (
+        <div>
+            <h1>Reviews</h1>
+            <FaReact />
+        </div>
+    );
 }
 export default Reviews;
