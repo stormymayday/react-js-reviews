@@ -2,7 +2,7 @@
 
 import data from "@/data";
 import { useState } from "react";
-import { FaQuoteRight } from "react-icons/fa";
+import { FaQuoteRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
 
 function Reviews() {
@@ -10,7 +10,21 @@ function Reviews() {
 
     const { name, image, job, text } = data[index];
 
-    console.log(name, setIndex);
+    const nextPerson = () => {
+        if (index < data.length - 1) {
+            setIndex(index + 1);
+        } else {
+            setIndex(0);
+        }
+    };
+
+    const prevPerson = () => {
+        if (index > 0) {
+            setIndex(index - 1);
+        } else {
+            setIndex(data.length - 1);
+        }
+    };
 
     return (
         <main>
@@ -30,6 +44,14 @@ function Reviews() {
                 <h4 className="author">{name}</h4>
                 <p className="job">{job}</p>
                 <p className="info">{text}</p>
+                <div className="btn-container">
+                    <button onClick={prevPerson} className="prev-btn">
+                        <FaChevronLeft />
+                    </button>
+                    <button onClick={nextPerson} className="next-btn">
+                        <FaChevronRight />
+                    </button>
+                </div>
             </article>
         </main>
     );
